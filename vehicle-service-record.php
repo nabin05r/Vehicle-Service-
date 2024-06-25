@@ -1,18 +1,40 @@
 <?php 
 
 /*
- * Plugin Name:      Vechicle Service Plugin
- * Plugin URI:        https://example.com/plugins/the-basics/
- * Description:       Handle the basics with this plugin.
- * Version:           1.10.3
+ * Plugin Name:       Vehicle Service Record 
+ * Plugin URI:        https://nabinmagar.com/
+ * Description:       Provides the detail information of Vechicle Servicing time and records all the useful data of vehicle and owner.
+ * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.2
- * Author:            John Smith
- * Author URI:        https://author.example.com/
+ * Author:            Nabin Gharti Magar
+ * Author URI:        https://nabinmagar.com/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Update URI:        https://example.com/my-plugin/
- * Text Domain:       my-basics-plugin
+ * Text Domain:       vehicle-service-record
  * Domain Path:       /languages
- * Requires Plugins:  my-plugin, yet-another-plugin
  */
+
+
+//Plugin Path
+define('PLUGIN_PATH', plugin_dir_path(__FILE__));
+
+//Plugin URL Path
+define('PLUGIN_URL_PATH', plugin_dir_url(__FILE__));
+
+//Menu Registration hook
+add_action('admin_menu', 'vsr_handle_menu');
+
+//
+function vsr_handle_menu(){
+
+    $icon = PLUGIN_URL_PATH . 'assets/img/vsr.png';
+    add_menu_page('Vehicle Service Record', 'Vehicle Service Record', 'manage_options', 'vsr-add-menu', 'vsr_display_menu_page', $icon, 30);
+
+}
+
+// Display Menu Page
+function vsr_display_menu_page(){
+    echo PLUGIN_PATH;
+}
