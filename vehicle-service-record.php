@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*
  * Plugin Name:       Vehicle Service Record 
@@ -27,14 +27,26 @@ define('PLUGIN_URL_PATH', plugin_dir_url(__FILE__));
 add_action('admin_menu', 'vsr_handle_menu');
 
 //
-function vsr_handle_menu(){
+function vsr_handle_menu()
+{
 
     $icon = PLUGIN_URL_PATH . 'assets/img/vsr.png';
-    add_menu_page('Vehicle Service Record', 'Vehicle Service Record', 'manage_options', 'vsr-add-menu', 'vsr_display_menu_page', $icon, 30);
+    add_menu_page(
+        'Vehicle Service Record',
+        'Vehicle Service Record',
+        'manage_options',
+        'vsr-add-menu',
+        'vsr_display_menu_page',
+        $icon,
+        30
+    );
 
+    //Submenu Page Add Vehicle
+    add_submenu_page('csr-add-menu', 'Add Vehicle ', '', $capability, $menu_slug, $function);
 }
 
 // Display Menu Page
-function vsr_display_menu_page(){
+function vsr_display_menu_page()
+{
     echo PLUGIN_PATH;
 }
